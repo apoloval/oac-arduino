@@ -1,5 +1,6 @@
 ## v0.2
 
+* Add a new library `oacenc.h`, which includes code to manage rotary encoders. 
 * `oacbtn.h`: enable default constructor for `Button` class. 
 * `oacled.h`: add a `writeDec()` function that allows to write decimal numbers
 coded in separated values for integer and decimal part. 

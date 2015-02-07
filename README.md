@@ -29,6 +29,8 @@ as digital shift registers, keyboard controllers, LED drivers, etc.
 Keypad Expansion Card, which is able to control a matrix of keys saving many 
 digital pins of your Arduino board.
 
+* `oacenc.h`. This library provides some classes to manage rotary encoders. 
+
 Along this libraries, the following sketches are provided.
 
 * `pedestal`. This sketch provides the code to manage the A320 pedestal

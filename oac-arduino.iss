@@ -41,6 +41,7 @@ Source: "libraries/oackb/*"; DestDir: "{app}/libraries/oackb"; Flags: ignorevers
 Source: "libraries/oacled/*"; DestDir: "{app}/libraries/oacled"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "libraries/oacshift/*"; DestDir: "{app}/libraries/oacshift"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "libraries/oacsp/*"; DestDir: "{app}/libraries/oacsp"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "libraries/oacenc/*"; DestDir: "{app}/libraries/oacenc"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
