@@ -109,7 +109,7 @@ public:
     * cannot be configured (e.g. due to invalid index or pins), false otherwise. 
     */
    bool configController(byte index, short dav, short oe) {
-      if (index > 8 || dav < 0 || oe < 0) {
+      if (index > 8 || dav < 0) {
         return false;
       }
       status |= (1 << index);
@@ -117,8 +117,10 @@ public:
       controller[index].oePin = oe;
 
       pinMode(dav, INPUT);
-      pinMode(oe, OUTPUT);
-      digitalWrite(oe, HIGH);
+      if (oe >= 0) {
+        pinMode(oe, OUTPUT);
+        digitalWrite(oe, HIGH);
+      }
 
       return true;
    }
@@ -132,10 +134,13 @@ public:
          for (short i = 0; i < 8; i++) {
             boolean isActive = status & (1 << i);
             if (isActive) {
-               int dav = digitalRead(controller[i].davPin);
-               if (dav == HIGH) {
-                  digitalWrite(controller[i].oePin, LOW);
-                  delay(50); // give time to the controller to activate the bus
+                int dav = digitalRead(controller[i].davPin);
+                if (dav == HIGH) {
+                  short oePin = controller[i].oePin;
+                  if (oePin >= 0) {
+                    digitalWrite(oePin, LOW);
+                    delay(50); // give time to the controller to activate the bus
+                  }
                   
                   short result = 0;
                   result |= digitalRead(bus.a) << 0;
@@ -144,8 +149,9 @@ public:
                   result |= digitalRead(bus.d) << 3;
                   result += i * 0x10;
                   
-                  digitalWrite(controller[i].oePin, HIGH);
-                  // delay(50);
+                  if (oePin >= 0) {
+                    digitalWrite(controller[i].oePin, HIGH);
+                  }
 
                   return result;
                }
