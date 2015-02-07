@@ -27,13 +27,20 @@ template <int OnState = DEFAULT_ON_STATE,
 class Button {
 public:
 
-  Button(int pin) :
+  Button(int pin = -1) :
       _pin(pin),
       _state(-1),
       _timeMark(0),
       _onPressed(0),
       _onReleased(0),
       _onToggled(0) {
+    if (pin != -1) {
+      pinMode(pin, INPUT);
+    }
+  }
+
+  void setPin(int pin) {
+    _pin = pin;
     pinMode(pin, INPUT);
   }
 
