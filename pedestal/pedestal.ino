@@ -8,9 +8,11 @@
  */
 
 #include <oacbtn.h>
+#include <oacenc.h>
 #include <oacexp.h>
 #include <oacio.h>
 #include <oackb.h>
+#include <oacled.h>
 #include <oacsp.h>
 #include <oacshift.h>
 
@@ -19,12 +21,14 @@
 #include "ecam.h"
 #include "engine.h"
 #include "mcdu.h"
+#include "radio.h"
 
 void setup() {
   OACSP.begin(DEVICE_NAME);
   ecam.setup();
   engine.setup();
   mcdu.setup();
+  rmp1.setup();
 }
 
 void loop() {
@@ -32,4 +36,5 @@ void loop() {
   ecam.loop();
   engine.loop();
   mcdu.loop();
+  rmp1.loop();
 }
