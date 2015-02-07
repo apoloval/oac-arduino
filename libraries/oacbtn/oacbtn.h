@@ -1,6 +1,6 @@
 /*
  * Open Airbus Cockpit - Arduino Button library
- * Copyright (c) 2014 Alvaro Polo
+ * Copyright (c) 2012-2015 Alvaro Polo
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
