@@ -61,7 +61,7 @@ public:
   }
 
   void begin(const char* clientName, int baudRate = 9600) {
-    Serial.setTimeout(50);
+    buffer.reserve(512);
     Serial.begin(baudRate);
     while (!Serial) {} // Wait for port to be open in Leonardo and Due
     Serial.print("BEGIN ");
@@ -138,19 +138,22 @@ public:
   }
 
   Event* pollEvent() {
-    char buf[OACSP_BUFFER_LEN];
-    int nread = Serial.readBytesUntil('\n', buf, OACSP_BUFFER_LEN - 1);
-    if (nread) {
-      buf[nread] = '\0';
-      String line((const char*) buf);
-      if (line.startsWith("EVENT_LVAR")) {
-        return pollLVarEvent(line);
-      } else if (line.startsWith("EVENT_OFFSET")) {
-        return pollOffsetEvent(line);
-      }
-    }
     polledEvent.type = NO_EVENT;
-    return NULL;
+    Event* result = NULL;
+    while (Serial.available()) {
+      char c = char(Serial.read());
+      buffer += c;
+      if (c == '\n') {
+        if (buffer.startsWith("EVENT_LVAR")) {
+          result = pollLVarEvent(buffer);
+        } else if (buffer.startsWith("EVENT_OFFSET")) {
+          result = pollOffsetEvent(buffer);
+        }
+        buffer = "";
+        break;
+      }
+      return result;
+    }
   }
 
   Event* event() {
@@ -211,6 +214,7 @@ private:
   }
 
   Event polledEvent;
+  String buffer;
 };
 
 }

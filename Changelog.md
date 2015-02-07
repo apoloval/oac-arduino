@@ -7,6 +7,10 @@ coded in separated values for integer and decimal part.
 * `oackb.h`: support OE signal to be unspecified. If so, it is assumed that
 OE pins of 7219's are connected to ground and therefore continuously ouput
 enabled. 
+* `oacsp.h`: huge performance improvement avoiding `readBytesUntil`. Now
+it reads available bytes and stores them into a buffer. Only when such a buffer
+contains a message the corresponding event is processed. That eliminates the
+50ms timeout of previous approach. 
 
 ## v0.1
 
