@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Open Airbus Cockpit - Arduino Libraries & Sketches"
-#define MyAppVersion "0.1"
+#define MyAppVersion "0.2-SNAPSHOT"
 #define MyAppPublisher "Open Airbus Cockpit"
 #define MyAppURL "http://www.openairbuscockpit.org/"
 
