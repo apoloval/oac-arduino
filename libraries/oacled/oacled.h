@@ -66,6 +66,25 @@ public:
          }
       }
        
+      void writeDec(unsigned long int_num, unsigned long dec_num, 
+                    byte from = 0, byte int_digits = 4, byte dec_digits = 4) {
+         byte first_int_digit = from;
+         byte last_int_digit = from + int_digits - 1;
+         for (int i = last_int_digit; i >= first_int_digit; i--) {
+           bool print_dot = i == last_int_digit;
+           byte digit = int_num % 10;
+           setDigit(i, digit, print_dot);
+           int_num /= 10;
+         }
+         byte first_dec_digit = from + int_digits;
+         byte last_dec_digit = from + int_digits + dec_digits - 1;
+         for (int i = last_dec_digit; i >= first_dec_digit; i--) {
+           byte digit = dec_num % 10;
+           setDigit(i, digit);
+           dec_num /= 10;
+         }
+      }
+     
       void setIntensity(float value) {
          if (value > 1.0f) { value = 1.0f; }
          if (value < 0.0f) { value = 0.0f; }
@@ -83,11 +102,15 @@ public:
          _parent->writeRegister(MAX7219_DECODE_MODE_ADDR, _decode_mode, _index);
       }
        
-      void setAllDecodeMode(byte mode) {
-         for (int digit = 0; digit < 8; digit++) {
+      void setDecodeMode(byte from_digit, byte to_digit, byte mode) {
+         for (int digit = from_digit; digit < to_digit + 1; digit++) {
            setDigitDecodeMode(digit, mode);
          }
          _parent->writeRegister(MAX7219_DECODE_MODE_ADDR, _decode_mode, _index);
+      }
+       
+      void setAllDecodeMode(byte mode) {
+         setDecodeMode(0, 8, mode);
       }
        
       void start() {
