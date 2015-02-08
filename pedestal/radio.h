@@ -7,23 +7,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-// Begin of pin assigment
-// Edit the following constants to change the cable layout.
-#define RADIO_DISPLAY_DIN_PIN     2
-#define RADIO_DISPLAY_CLK_PIN     3
-#define RADIO_DISPLAY_LOAD_PIN    4
-#define RADIO_POWER_PIN           5
-#define RADIO_ENC_IA_PIN          8
-#define RADIO_ENC_IB_PIN          9
-#define RADIO_ENC_OA_PIN          10
-#define RADIO_ENC_OB_PIN          11
-#define RADIO_KEYPAD_DAV_PIN      22
-#define RADIO_KEYPAD_DATAA_PIN    24
-#define RADIO_KEYPAD_DATAB_PIN    26
-#define RADIO_KEYPAD_DATAC_PIN    28
-#define RADIO_KEYPAD_DATAD_PIN    30
-// End of pin assignment
-
 #define RADIO_NAV_IND    0x0040
 #define RADIO_VOR_IND    0x0020
 #define RADIO_ILS_IND    0x0001
@@ -82,9 +65,9 @@ struct RadioPanel {
       
       void setup() {
          displays.setPins(
-            RADIO_DISPLAY_DIN_PIN, 
-            RADIO_DISPLAY_LOAD_PIN, 
-            RADIO_DISPLAY_CLK_PIN);
+            RMP1_DISPLAY_DIN_PIN, 
+            RMP1_DISPLAY_LOAD_PIN, 
+            RMP1_DISPLAY_CLK_PIN);
        
          // Variable `modes` store the known modes for each display.
          // We set it to default mode set by oacled library. 
@@ -418,22 +401,22 @@ struct RadioPanel {
    }     
   
    void setupEncoders() {
-      innerEncoder.setPins(RADIO_ENC_IA_PIN, RADIO_ENC_IB_PIN);
-      outerEncoder.setPins(RADIO_ENC_OA_PIN, RADIO_ENC_OB_PIN);
+      innerEncoder.setPins(RMP1_ENC_IA_PIN, RMP1_ENC_IB_PIN);
+      outerEncoder.setPins(RMP1_ENC_OA_PIN, RMP1_ENC_OB_PIN);
    }
   
    void setupPowerButton() {
-      powerBtn.setPin(RADIO_POWER_PIN);
+      powerBtn.setPin(RMP1_POWER_PIN);
    }
   
    void setupKeypad() {
       kb.configBus(
-         RADIO_KEYPAD_DATAA_PIN,
-         RADIO_KEYPAD_DATAB_PIN,
-         RADIO_KEYPAD_DATAC_PIN,
-         RADIO_KEYPAD_DATAD_PIN);
+         RMP1_KEYPAD_DATAA_PIN,
+         RMP1_KEYPAD_DATAB_PIN,
+         RMP1_KEYPAD_DATAC_PIN,
+         RMP1_KEYPAD_DATAD_PIN);
       kb.configController(
-         OAC::Keypad::CONTROLLER_0, RADIO_KEYPAD_DAV_PIN, -1);
+         OAC::Keypad::CONTROLLER_0, RMP1_KEYPAD_DAV_PIN, -1);
    }
    
    /** Setup the FSUIPC offsets (observe the tuned frequencies in the sim). */
