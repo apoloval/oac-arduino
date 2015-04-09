@@ -99,7 +99,7 @@ in order to receive a event each time its value changes.
 ```c++
 void setup() {
 	OACSP.begin("MyCockpit");
-	OACSP.observeOffset(0x0330, oac::OFFSET_UINT16);
+	OACSP.observeOffset(0x0330, OAC::OFFSET_UINT16);
 }
 
 ```
@@ -124,7 +124,7 @@ be read as follows.
 ```c++
 void loop() {
 	OACSP.pollEvent();
-	if (OAC::OffsetUpdateEvent* ev = OACSP.offsetUpdateEvent(0x0330)) {
+	if (OAC::OffsetUpdateEvent* event = OACSP.offsetUpdateEvent(0x0330)) {
 		showQnh(event->value);
 	}
 }
