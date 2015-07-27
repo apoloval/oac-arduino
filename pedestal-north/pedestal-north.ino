@@ -1,5 +1,5 @@
 /*
- * Open Airbus Cockpit - Arduino Pedestal Sketch
+ * Open Airbus Cockpit - Arduino North Pedestal Sketch
  * Copyright (c) 2012-2015 Alvaro Polo
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,7 +16,7 @@
 #include <oacsp.h>
 #include <oacshift.h>
 
-#define DEVICE_NAME "PedestalMaster"
+#define DEVICE_NAME "PedestalNorth"
 
 #include "pins.h"
 
