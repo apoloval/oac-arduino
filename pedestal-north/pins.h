@@ -31,11 +31,6 @@
 #define ECAM_EXP0_PINS           28, 30, 32, 34, 36, 38
 #define ECAM_EXP1_PINS           29, 31, 33, 35, 37, 39
 
-// Engine panel
-#define ENGINE_MASTER1_SW_PIN    22
-#define ENGINE_MASTER2_SW_PIN    23
-#define ENGINE_MODE_SEL_PIN      24
-
 // Left MCDU
 #define MCDU_BUS_PINS            2, 3, 4, 5
 #define MCDU_CTRL0_PINS          40, 41

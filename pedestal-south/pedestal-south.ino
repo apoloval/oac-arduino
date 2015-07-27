@@ -1,5 +1,5 @@
 /*
- * Open Airbus Cockpit - Arduino North Pedestal Sketch
+ * Open Airbus Cockpit - Arduino South Pedestal Sketch
  * Copyright (c) 2012-2015 Alvaro Polo
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,24 +16,18 @@
 #include <oacsp.h>
 #include <oacshift.h>
 
-#define DEVICE_NAME "PedestalNorth"
+#define DEVICE_NAME "PedestalSouth"
 
 #include "pins.h"
 
-#include "ecam.h"
-#include "mcdu.h"
-#include "radio.h"
+#include "engine.h"
 
 void setup() {
   OACSP.begin(DEVICE_NAME);
-  ecam.setup();
-  mcdu.setup();
-  rmp1.setup();
+  engine.setup();
 }
 
 void loop() {
   OACSP.pollEvent();
-  ecam.loop();
-  mcdu.loop();
-  rmp1.loop();
+  engine.loop();
 }

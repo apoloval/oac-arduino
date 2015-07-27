@@ -1,5 +1,5 @@
 /*
- * Open Airbus Cockpit - Arduino North Pedestal Sketch
+ * Open Airbus Cockpit - Arduino South Pedestal Sketch
  * Copyright (c) 2012-2015 Alvaro Polo
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
