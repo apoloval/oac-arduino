@@ -11,19 +11,19 @@
 // Use it to configure the cable layout of your Arduino board. 
 
 // Radio Management Panel #1
-#define RMP1_DISPLAY_DIN_PIN     2
-#define RMP1_DISPLAY_CLK_PIN     3
-#define RMP1_DISPLAY_LOAD_PIN    4
-#define RMP1_POWER_PIN           5
-#define RMP1_ENC_IA_PIN          8
-#define RMP1_ENC_IB_PIN          9
-#define RMP1_ENC_OA_PIN          10
-#define RMP1_ENC_OB_PIN          11
-#define RMP1_KEYPAD_DAV_PIN      22
-#define RMP1_KEYPAD_DATAA_PIN    24
-#define RMP1_KEYPAD_DATAB_PIN    26
-#define RMP1_KEYPAD_DATAC_PIN    28
-#define RMP1_KEYPAD_DATAD_PIN    30
+#define RMP1_DISPLAY_DIN_PIN     6
+#define RMP1_DISPLAY_CLK_PIN     7
+#define RMP1_DISPLAY_LOAD_PIN    8
+#define RMP1_POWER_PIN           27
+#define RMP1_ENC_IA_PIN          50
+#define RMP1_ENC_IB_PIN          51
+#define RMP1_ENC_OA_PIN          52
+#define RMP1_ENC_OB_PIN          53
+#define RMP1_KEYPAD_DAV_PIN      9
+#define RMP1_KEYPAD_DATAA_PIN    10
+#define RMP1_KEYPAD_DATAB_PIN    11
+#define RMP1_KEYPAD_DATAC_PIN    12
+#define RMP1_KEYPAD_DATAD_PIN    13
 
 // ECAM panel
 #define ECAM_UPPER_ROTARY_PIN    0
