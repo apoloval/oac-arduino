@@ -7,15 +7,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-// Set the pin layout using these macros
-#define MCDU_BUS_PINS      2, 3, 4, 5
-#define MCDU_CTRL0_PINS    40, 41
-#define MCDU_CTRL1_PINS    42, 43
-#define MCDU_CTRL2_PINS    44, 45
-#define MCDU_CTRL3_PINS    46, 47
-#define MCDU_CTRL4_PINS    48, 49
-
-
 #define MCDU_KEY_L1        0
 #define MCDU_KEY_L2        1
 #define MCDU_KEY_L3        2

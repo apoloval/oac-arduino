@@ -7,9 +7,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#define ECAM_UPPER_BRIGHT 0
-#define ECAM_LOWER_BRIGHT 1
-
 #define ECAM_TOCFG_BTN    0x0001
 #define ECAM_ENG_BTN      0x0002
 #define ECAM_BLEED_BTN    0x0004
@@ -54,10 +51,10 @@ struct {
   void setup() {
     lights = 0;
     buttons = 0;
-    upperBright.setPin(ECAM_UPPER_BRIGHT);
-    lowerBright.setPin(ECAM_LOWER_BRIGHT);
-    card0.setPins(28, 30, 32, 34, 36, 38);
-    card1.setPins(29, 31, 33, 35, 37, 39);
+    upperBright.setPin(ECAM_UPPER_ROTARY_PIN);
+    lowerBright.setPin(ECAM_LOWER_ROTARY_PIN);
+    card0.setPins(ECAM_EXP0_PINS);
+    card1.setPins(ECAM_EXP1_PINS);
     
     OACSP.observeLVar("AB_ECAM_CLR_Light");
     OACSP.observeLVar("ECAM_MODE");
