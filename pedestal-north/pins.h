@@ -12,8 +12,8 @@
 
 // Radio Management Panel #1
 #define RMP1_DISPLAY_DIN_PIN     6
-#define RMP1_DISPLAY_CLK_PIN     7
-#define RMP1_DISPLAY_LOAD_PIN    8
+#define RMP1_DISPLAY_LOAD_PIN    7
+#define RMP1_DISPLAY_CLK_PIN     8
 #define RMP1_POWER_PIN           27
 #define RMP1_ENC_IA_PIN          50
 #define RMP1_ENC_IB_PIN          51
