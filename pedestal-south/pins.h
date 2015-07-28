@@ -10,7 +10,10 @@
 // This is the pin assignment file. 
 // Use it to configure the cable layout of your Arduino board. 
 
-// Engine panel
-#define ENGINE_MASTER1_SW_PIN    22
-#define ENGINE_MASTER2_SW_PIN    23
-#define ENGINE_MODE_SEL_PIN      24
+// Engine start-up panel
+#define ENGINE_CLOCK_PIN      22
+#define ENGINE_DAV_PIN        23
+#define ENGINE_IN_LATCH_PIN   24
+#define ENGINE_IN_DATA_PIN    25
+#define ENGINE_OUT_LATCH_PIN  26
+#define ENGINE_OUT_DATA_PIN   27
