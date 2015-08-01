@@ -1,5 +1,5 @@
 /*
- * Open Airbus Cockpit - Arduino Pedestal Sketch
+ * Open Airbus Cockpit - Arduino North Pedestal Sketch
  * Copyright (c) 2012-2015 Alvaro Polo
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,8 +12,8 @@
 
 // Radio Management Panel #1
 #define RMP1_DISPLAY_DIN_PIN     6
-#define RMP1_DISPLAY_CLK_PIN     7
-#define RMP1_DISPLAY_LOAD_PIN    8
+#define RMP1_DISPLAY_LOAD_PIN    7
+#define RMP1_DISPLAY_CLK_PIN     8
 #define RMP1_POWER_PIN           27
 #define RMP1_ENC_IA_PIN          50
 #define RMP1_ENC_IB_PIN          51
@@ -30,11 +30,6 @@
 #define ECAM_LOWER_ROTARY_PIN    1
 #define ECAM_EXP0_PINS           28, 30, 32, 34, 36, 38
 #define ECAM_EXP1_PINS           29, 31, 33, 35, 37, 39
-
-// Engine panel
-#define ENGINE_MASTER1_SW_PIN    22
-#define ENGINE_MASTER2_SW_PIN    23
-#define ENGINE_MODE_SEL_PIN      24
 
 // Left MCDU
 #define MCDU_BUS_PINS            2, 3, 4, 5
