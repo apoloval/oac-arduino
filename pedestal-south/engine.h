@@ -10,6 +10,8 @@
 #define ENGINE_MASTER1_LVAR      "AB_PDS_Eng1Master"
 #define ENGINE_MASTER2_LVAR      "AB_PDS_Eng2Master"
 #define ENGINE_MODE_LVAR         "AB_PDS_ignition"
+#define ENGINE_FIRE1_LVAR        "AB_FIRE_ENG1"
+#define ENGINE_FIRE2_LVAR        "AB_FIRE_ENG2"
 
 #define ENGINE_MASTER1_MASK(b)   ((b & 0x01) >> 0)
 #define ENGINE_MASTER2_MASK(b)   ((b & 0x02) >> 1)
@@ -17,23 +19,24 @@
 
 #define ENGINE_MASK_NEQ(l, r, m) (m(l) != m(r)) 
 
+#define ENGINE_FIRE1_MASK        0x01
+#define ENGINE_FIRE2_MASK        0x04
+
 struct Engine {
    OAC::Shift4021 in;
    OAC::Shift595 out;
    byte prevInput;
+   byte output;
 
    void setup() {
       setupPins();
       setupInitialState();
+      setupObservedLVars();
    }
   
    void loop() {
-      int dav = digitalRead(ENGINE_DAV_PIN);
-      if (dav) {
-         // Have to wait some millis to give time for data to be ready
-         delay(20);
-         processInput();
-      }
+      inputLoop();
+      outputLoop();
    }
 
 private:
@@ -53,6 +56,37 @@ private:
    void setupInitialState() {
       prevInput = 0;
       processInput();
+
+      output = 0;
+      processOutput();
+   }
+
+   void setupObservedLVars() {
+      OACSP.observeLVar(ENGINE_FIRE1_LVAR);
+      OACSP.observeLVar(ENGINE_FIRE2_LVAR);
+   }
+
+   void inputLoop() {
+      int dav = digitalRead(ENGINE_DAV_PIN);
+      if (dav) {
+         // Have to wait some millis to give time for data to be ready
+         delay(20);
+         processInput();
+      }
+   }
+
+   void outputLoop() {
+      OAC::LVarUpdateEvent* ev;
+      if (ev = OACSP.lvarUpdateEvent(ENGINE_FIRE1_LVAR)) {
+         if (ev->value == 0) output &= ~ENGINE_FIRE1_MASK;
+         else output |= ENGINE_FIRE1_MASK;
+         processOutput();
+      }
+      if (ev = OACSP.lvarUpdateEvent(ENGINE_FIRE2_LVAR)) {
+         if (ev->value == 0) output &= ~ENGINE_FIRE2_MASK;
+         else output |= ENGINE_FIRE2_MASK;
+         processOutput();
+      }
    }
 
    void processInput() {
@@ -64,6 +98,10 @@ private:
       setEngineMode(data);
 
       prevInput = data;
+   }
+
+   void processOutput() {
+      out.shiftByteOut(output);
    }
 
    void setMasterOne(byte data) {
