@@ -1,3 +1,3 @@
-This program would install Open Airbus Cockpit Arduino libraries & sketches in your system.
+This program would install Avionica libraries & sketches in your system.
 
-The installation process would copy the libraries & sketches into the Arduino folder of your user account. That means these libraries would be available only for this user only. 
+The installation process would copy the libraries & sketches into the Arduino folder of your user account. That means these libraries would be available only for current user only. 
